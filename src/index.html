@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <div class="left-pane">
+        <h2>QRCode to JSON</h2>
+        <label>扫码输入</label>
+        <input type="text" name="scaninput" id="scaninput" autofocus placeholder="选中此输入框，并用扫描枪对准下面生成的二维码" />
+        <button id="btncamera">使用摄像头</button>
+        <div class="video-container">
+            <video id="video" width="300" height="200"></video>
+        </div>
+        <div>
+            <p class="comment">
+                1. 右侧点击生成二维码。<br/>
+                2. 用扫描枪对准二维码，扫描枪自动将内容填入上面的输入框，并自动输入回车键。<br/>
+                3. 输入框检测到回车键，解析二维码内容，转化为表单内容。<br/>
+            </p>
+        </div>
+        <div>
+            <h5>解析内容</h5>
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    <div class="right-pane">
+        <h2>JSON to QRCode</h2>
+        <form id="qrcodeform">
+                <div><input type="reset" value="reset">
+                    <input type="submit" value="生成二维码" /></div>
+            <textarea name="inputcode" id="inputcode" cols="30" rows="10"></textarea>
+            
+        </form>
+        <div id="outputimg"></div>
+        <h5>二维码内容</h5>
+        <div>
+            <span class="comment">将字符串压缩并编码成base64。直接使用atob和btoa函数只支持ascii字符不支持utf8字符，故需要转换。</span>
+        </div>
+        <textarea name="outputcode" id="outputcode" cols="30" rows="10"></textarea>
+
+    </div>
+    <script src="bundle.js"></script>
+</body>
+
+</html>
